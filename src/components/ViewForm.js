@@ -1,9 +1,7 @@
-import React ,{useEffect}from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
-
+import '../pages/Login.css'
 const ViewForm = ({setUserData, userData, toggleViewEdit,setToggleViewEdit }) => {
-  
-
   const onChange =()=>{
     setToggleViewEdit({
       view:!toggleViewEdit.view,
@@ -13,7 +11,7 @@ const ViewForm = ({setUserData, userData, toggleViewEdit,setToggleViewEdit }) =>
   return (
 
     <div>
-      <div style={{marginTop:"50px"}}>
+      <div>
         <div className="card">
           <div className="card-header">
             <p> Your Contact Details</p>
@@ -33,7 +31,7 @@ const ViewForm = ({setUserData, userData, toggleViewEdit,setToggleViewEdit }) =>
             
             <br/>
             <Link to="/dashboard">
-              <button className="btn btn-primary" onClick={onChange}>Edit</button>
+              <button className="btn btn-primary" style={{width:'100%'}} onClick={onChange}>Edit</button>
             </Link>
           </div>
         </div>

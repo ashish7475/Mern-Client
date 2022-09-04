@@ -5,7 +5,7 @@ import axios from 'axios'
 
 
 const EditForm = ({userData,setUserData , toggleViewEdit , setToggleViewEdit , toggleUpdateCreate , setToggleUpdateCreate}) => {
-  const [buttonText,setButtonText] = React.useState("AddData")
+
   const navigate = useNavigate()
   const onChange =()=>{
     setToggleViewEdit({
@@ -32,7 +32,6 @@ const EditForm = ({userData,setUserData , toggleViewEdit , setToggleViewEdit , t
     })
    if(res.data.message){
     toast.success(res.data.message)
-    setButtonText("Edit")
     setTimeout(()=>{
       setToggleViewEdit({
         view:!toggleViewEdit.view,
@@ -58,11 +57,11 @@ const EditForm = ({userData,setUserData , toggleViewEdit , setToggleViewEdit , t
 
 
   <label htmlFor="mobile">Mobile No</label>
-  <input type="text" onChange={handleInputChange} className="form-control" value={userData.mobile} name='mobile' placeholder="Enter 10 Digit Mobile Number"/>
+  <input type="text" onChange={handleInputChange} className="form-control" value={userData.mobile} name='mobile' placeholder="XXXX XXXXXX"/>
 
 
-  <input type="submit"  className="btn btn-primary " value={buttonText}/>
-  <button type="button" className="btn btn-primary " onClick={onChange}>View</button>
+  <input type="submit" style={{display:'block', width:'100%'}}  className="btn btn-primary " value={userData.age||userData.mobile||userData.gender?'Edit':'AddData'}/>
+  <button type="button" style={{display:'block', width:'100%'}} className="btn btn-primary " onClick={onChange}>View</button>
 </form> 
     </div>
   )

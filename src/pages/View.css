@@ -5,6 +5,13 @@
     border:1px solid red;
     align-content: center;
     margin: 0 auto;
+    
+
+  }
+  @media (max-width:990px){
+    .card{
+      width: 100%;
+    }
   }
   
   .card-header{

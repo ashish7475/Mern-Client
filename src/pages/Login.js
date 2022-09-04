@@ -4,7 +4,8 @@ import './Login.css'
 import {ToastContainer ,toast} from 'react-toastify'
 import axios from 'axios'
 
-const Login = () => {
+const Login = ({login,setLogin}) => {
+
   const navigate = useNavigate()
   const [user,setUser] = React.useState({
     email:"",
@@ -31,7 +32,7 @@ const Login = () => {
       if(response.data.status==='ok'){
         
         localStorage.setItem('token',response.data.token)
-        localStorage.setItem("user",JSON.stringify(user));
+        setLogin(true)
        
         toast.success(response.data.message,{position: toast.POSITION.TOP_CENTER})
         setTimeout(()=>navigate('/dashboard'),2000)
@@ -60,11 +61,11 @@ const Login = () => {
     <label htmlFor="password">Password</label>
     <input type="password" value={user.password} onChange={handleInputChange}  className="form-control" name='password' placeholder="Password"/>
     
-    <input type="submit" className="btn btn-primary " value="Login"></input>
+    <input style={{width:'100%'}} type="submit" className="btn btn-primary " value="Login"></input>
 
     <span>New User ? SignUp </span>
     <Link to='/SignUp'>
-      <button type="button" className='btn1 btn-primary'>SignUp</button>
+      <button type="button" style={{width:'100%'}} className='btn1 btn-primary'>SignUp</button>
     </Link>
   
 </form>

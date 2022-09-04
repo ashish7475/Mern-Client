@@ -8,7 +8,7 @@ import ViewForm from '../components/ViewForm'
 import EditForm from '../components/EditForm'
 
 
-const Dashboard= () => {
+const Dashboard= ({login,setLogin}) => {
   
   const navigate = useNavigate()
 
@@ -35,9 +35,9 @@ const [userData,setUserData] = React.useState({
         'x-access-token': localStorage.getItem('token')
       }
     })
-    const {name,email} = res.data.user
-    console.log(res.data.user)
-    setUserData({...userData,name,email})
+    
+   
+    setUserData({...userData,...res.data.user})
     
 
   }
@@ -62,12 +62,17 @@ useEffect(()=>{
     }
   },[])
   const handleLogOut = ()=>{
-     localStorage.clear()
+    localStorage.clear()
+    setTimeout(() => {
+      navigate('/')
+    }, 1000);
+    
+     
   }
   return (
  <div className='container'>
   <h1>Welcome {userData.name}</h1>
-   <Link to='/'><button className='btn btn-secondary' onChange={handleLogOut} type='button'>LogOut</button></Link>
+  <button style={{background:'crimson'}} className='btn btn-secondary' onClick={handleLogOut} type='button'>LogOut</button>
   
  {toggleViewEdit.view && <ViewForm  setUserData={setUserData} userData={userData}  toggleViewEdit={toggleViewEdit} setToggleViewEdit={setToggleViewEdit}/> } 
 

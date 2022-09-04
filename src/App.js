@@ -7,16 +7,16 @@ import './App.css'
 
 
 const App = () => {
-  
+  const [login , setLogin] = React.useState(false)
   return (
     <React.StrictMode>
     
     <Routes>
-        <Route path='/' element={<Login/>}/>
+        <Route path='/' element={<Login login={login} setLogin={setLogin}/>}/>
         <Route path='/SignUp' element={<SignUp/>}/>
         <Route path='/dashboard' 
         element={
-             <Dashboard/>
+             <Dashboard login={login} setLogin={setLogin}/>
             }/>
         
         
